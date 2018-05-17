@@ -28,10 +28,10 @@ yes, i'll be taking [notes](/finance-notes)
 - Interest and Debt (16 videos, 133 minutes)
   - [x] Compound interest basics
   - [x] Interest basics
-  - [ ] Credit cards and loans
-  - [ ] Continuous compound interest and e
-  - [ ] Present value
-  - [ ] Personal bankruptcy
+  - [x] Credit cards and loans
+  - [x] Continuous compound interest and e
+  - [x] Present value
+  - [x] Personal bankruptcy
 - Housing (19 videos, 188 minutes)
   - [ ] Home equity and personal balance sheets
   - [ ] Renting vs buying a home
