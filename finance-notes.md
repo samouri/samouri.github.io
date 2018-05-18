@@ -26,7 +26,7 @@ $$
 
 **APR**: it stands for annual percentage rate. credit card companies often lie in that they will tell you a number that is `365 * daily percentage rate` when in reality it should be _compounding_ and the real number will actually be `365^rate`.  
 
-**Credit card institutions**: first off there are _payment processors_. Examples include Visa, Mastercard, Amex, and Discover.  They maintain computer networks and policies and whatnot that connect that connect banks to each other.  An individual gets a credit card from an issuing bank that is within one of the processing networks. In order to accept payment from individuals with cards from different payment processors, businesses need to sign up with "acquirer banks".  That basically means signing up with a bank that lets them accept these transactions for a fee -- usually in the ballpark of 2% of the transaction. The benefit for the business is that it is then easier for their customers to pay. The acquirer bank gets about 0.2%, the network gets about 0.1%, and the issuing bank gets the remaining 1.7%.  
+**credit card institutions**: first off there are _payment processors_. Examples include Visa, Mastercard, Amex, and Discover.  They maintain computer networks and policies and whatnot that connect that connect banks to each other.  An individual gets a credit card from an issuing bank that is within one of the processing networks. In order to accept payment from individuals with cards from different payment processors, businesses need to sign up with "acquirer banks".  That basically means signing up with a bank that lets them accept these transactions for a fee -- usually in the ballpark of 2% of the transaction. The benefit for the business is that it is then easier for their customers to pay. The acquirer bank gets about 0.2%, the network gets about 0.1%, and the issuing bank gets the remaining 1.7%.  
 
 **payday loans**: these are usually awful loans that people take out in desperate times where the interest rate is ~25% and compounds on a two week basis. "usury" means an unreasonable interest rate, and 25% compounding means 32,000% effective APR. they don't care about credit when giving out payday loans: only the pay stub and pay date. The person would fill out a check with the date of they pay day on it, and the loan shark cashes the check on that day to ensure higher priority over things like rent and bills
 
@@ -44,3 +44,16 @@ $$
 | 2008 | 560k      | 334k       |
 | 2009 | 819k      | 370k       |
 
+### Stocks and bonds
+
+**stock**: a share of a company. if you own stock then you own a percentage of the equity of that company. you are a part-owner. 
+
+**bond**: a bond is when you _lend_ money. if you buy bonds you become a part-lender.
+
+**equity**: $$equity = assets - liability$$. liabilities are all of the things the company owes, assets are all of the things with potential future or current value, and equity is what is leftover for shareholders.
+
+**market cap**: current _actual_ bids multiplied by number of shares.  aka market's determination of worth as opposed to the company's books.
+
+**short selling**: essentially betting that a stock is going to go down in the future.  the way it mechanically works is that you "borrow" a share from broker, and instantly sell it.  that means that you are up the current value, and liable a share.  then in the future when you sell the short, you need to buy the stock at its price. so if it went down then you make the money that is the difference between what you initially sold it for and what it currently costs. what is super risky about it is that you can lose infinite money if the stock does really well. a perfect short seller is good for the market in that s/he makes the stock less volatile. one interesting thing about short sellers are that they are the _only_ people in the market hoping for things to go down. everyone else wants it to go up (long sellers, the companies themselves, financial press, government, etc.).  
+
+**gross and operating profit**: gross profit is simply the item price minus item cost. the operating profit is when you then also subtract all of the operating costs like people's salaries and the building rent. before operating profit becomes actual profit, you first take away the loan payments for that month and then you have the pretax income. 

@@ -10,7 +10,10 @@ permalink: /log/
 
 - [x] Atlanta Season 2
 
-- [ ] The Office Seasons 8,9
+- [ ] The Office Season
+
+  - [x] Season 8
+  - [ ] Season 9
 
   
 
@@ -48,6 +51,8 @@ yes, i'll be taking [notes](/finance-notes)
   - [ ] Corporate taxation
 - Accounting and financial statements (13 videos)
 - Stocks and bonds (41 videos)
+  - [x] Introduction to stocks
+  - [ ] Shorting a stock
 - Investment vehicles, insurance, and retirement (24 videos)
 - Money, banking and central banks (86 videos)
 - Options, swaps, futures, MBS, CDOs, and other derivatives (52 videos)
