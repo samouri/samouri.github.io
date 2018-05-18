@@ -52,7 +52,15 @@ yes, i'll be taking [notes](/finance-notes)
 - Accounting and financial statements (13 videos)
 - Stocks and bonds (41 videos)
   - [x] Introduction to stocks
-  - [ ] Shorting a stock
+  - [x] Shorting a stock
+  - [x] Understanding company statements and capital structure
+  - [ ] Corporate metrics and valuation
+  - [ ] Life of a company -- from birth to death
+  - [ ] Dilution
+  - [ ] Mergers and acquisitions
+  - [ ] Leveraged buy-outs
+  - [ ] Bonds
+  - [ ] Corporate Banktruptcy
 - Investment vehicles, insurance, and retirement (24 videos)
 - Money, banking and central banks (86 videos)
 - Options, swaps, futures, MBS, CDOs, and other derivatives (52 videos)
@@ -61,6 +69,13 @@ yes, i'll be taking [notes](/finance-notes)
 
 **what is a compiler**
 - [x] [super tiny compiler](https://github.com/jamiebuilds/the-super-tiny-compiler): 200 line compiler that demonstrates all of the steps that a standard compiler undertakes. First is lexing which has two stages: lexical analysis (via a lexer or tokenizer) and syntactic analysis which converts the tokens into an ast. transformation from ast into something is done via a _transformation_ step which almost always involves somehow "traversing" the tree via the visitor pattern.  the final step after transformation is then code generation (printing it back out).
+
+**30 days of JS**
+
+I've heard Wes Bos has a great tutorial called "[Javascript 30](https://javascript30.com/)" where you complete 30 little projects in 30 days.  I'm going to give it a go since while I know both es6 and react, I never learned DOM apis. Also lets see if I can do it in 5 days.
+
+1. [drum kit](/js30/1)
+1. [css clock](/js30/2)
 
 **misc whitepapers**
 

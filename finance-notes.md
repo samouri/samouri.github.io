@@ -52,8 +52,18 @@ $$
 
 **equity**: $$equity = assets - liability$$. liabilities are all of the things the company owes, assets are all of the things with potential future or current value, and equity is what is leftover for shareholders.
 
-**market cap**: current _actual_ bids multiplied by number of shares.  aka market's determination of worth as opposed to the company's books.
+**market cap**: current _actual_ bids multiplied by number of shares.  aka market's determination of worth as opposed to the company's books. it is the "markets value of the owners equity". often the market cap can actually be higher than the books numbers because people think the company is worth more than the sum of its identifying parts. these things are called the "intangibles". 
 
 **short selling**: essentially betting that a stock is going to go down in the future.  the way it mechanically works is that you "borrow" a share from broker, and instantly sell it.  that means that you are up the current value, and liable a share.  then in the future when you sell the short, you need to buy the stock at its price. so if it went down then you make the money that is the difference between what you initially sold it for and what it currently costs. what is super risky about it is that you can lose infinite money if the stock does really well. a perfect short seller is good for the market in that s/he makes the stock less volatile. one interesting thing about short sellers are that they are the _only_ people in the market hoping for things to go down. everyone else wants it to go up (long sellers, the companies themselves, financial press, government, etc.).  
 
-**gross and operating profit**: gross profit is simply the item price minus item cost. the operating profit is when you then also subtract all of the operating costs like people's salaries and the building rent. before operating profit becomes actual profit, you first take away the loan payments for that month and then you have the pretax income. 
+**gross and operating profit**: gross profit is simply the item price minus item cost. the operating profit is when you then also subtract all of the operating costs like people's salaries and the building rent. before operating profit becomes actual profit, you first take away the loan payments for that month and then you have the pretax income.   
+
+**capital structure**: thats when you look at the business more holistically to see where they got their money and how much equity they are running with. if they needed less liability and loans then they have more equity and the worse the interest rate the worst it is for them.  
+
+**stock price**: the price of a stock tells you nothing about if it is a good deal or not.  it does have some effects on who pays attention to it. For example some only deal in penny stocks and some some don't buy any below 5 dollars.  
+
+**statements**: there are three that people pay attention to. balance sheet, income statement, and cash flow statement.   balance sheet is like a snapshot of a company frozen in time that tells you assets, liabilities at that moment.  income statements are basically the in between. cash statements explain the income statements.
+
+**return on assets (ROA)**: $$\dfrac{assets} {income}$$.  
+
+**earnings terms**: trailing twelve months (TTM) earnings is all earning in the past year. earnings per share (EPS) is $$earning/shares$$.  price to earnings ratio (PEA) $$stock price / eps$$.  forward earnings is the amount that analysts predict a company is going to make in the future. the people doing the research are called on the sell side. 
