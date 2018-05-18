@@ -64,6 +64,12 @@ $$
 
 **statements**: there are three that people pay attention to. balance sheet, income statement, and cash flow statement.   balance sheet is like a snapshot of a company frozen in time that tells you assets, liabilities at that moment.  income statements are basically the in between. cash statements explain the income statements.
 
-**return on assets (ROA)**: $$\dfrac{assets} {income}$$.  
+**return on assets (ROA)**: $$\dfrac{assets} {income}$$.  There are actually many different valid definitions about this so its always worth asking someone what they mean. Could be EBIT (earnings before income tax), or net income / assets, or (net income + interest - tax savings from interest) / assets, or even (operating profit) / assets.
 
 **earnings terms**: trailing twelve months (TTM) earnings is all earning in the past year. earnings per share (EPS) is $$earning/shares$$.  price to earnings ratio (PEA) $$stock price / eps$$.  forward earnings is the amount that analysts predict a company is going to make in the future. the people doing the research are called on the sell side. 
+
+**price to earnings (P/E)**: this is one of the things people use to figure out if something is a good or bad price for a stock. in general you are willing to pay for a higher P/E if you think its going to grow, and the reverse if you think the company is diminishing.  
+
+**depreciation**: literally means when something loses value over time. in accounting/bussiness context, it is a useful concept for illustrating how something that initially might seem like a recurring big payment is actually a cost spread out over time.  For example lets say you are a divorced parent and need to pay your child's tuition once every other year. you can either capture your earnings to be annually spiky, or you can view the tuition payment as something that depreciates over a two year period that you "use up" half of each year.  the textbook example was factory equipment that needs to be replaced every two years. So when you buy new equipment, you see it as an asset that then depreciates over time instead of as a cost.  
+
+**amortization**: the same thing as depreciation but for intangibles. e.g. lets say you purchase a patent that lasts 4 years.  then you should actually spread out its cost over 4 years instead of marking it as an all-at-once-cost.
