@@ -15,6 +15,8 @@ permalink: /log/
   - [x] Season 8
   - [ ] Season 9
 
+- [ ] Full Metal Alchemist: Brotherhood
+
   
 
 **Learning**
