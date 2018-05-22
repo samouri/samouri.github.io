@@ -72,12 +72,20 @@ yes, i'll be taking [notes](/finance-notes)
 **what is a compiler**
 - [x] [super tiny compiler](https://github.com/jamiebuilds/the-super-tiny-compiler): 200 line compiler that demonstrates all of the steps that a standard compiler undertakes. First is lexing which has two stages: lexical analysis (via a lexer or tokenizer) and syntactic analysis which converts the tokens into an ast. transformation from ast into something is done via a _transformation_ step which almost always involves somehow "traversing" the tree via the visitor pattern.  the final step after transformation is then code generation (printing it back out).
 
+**what is a caml**
+
+The intersection of functional programming and the web has been an interesting and chaotic space recently.  Ever since college I've had an interest in OCaml and nowadays with Bucklescript and its sister project Reason, we can make super efficient webapps using it.  The first project I wanted to build was an algorithm visualizer [vizzy](https://github.com/samouri/vizzy) but I quickly learned that it was too much to chew for a first go round.  In order to start a bit smaller, I am currently working on making [Frogger using Bucklescript](https://github.com/FriteGames/buckle-frogger).
+
+
+
 **30 days of JS**
 
 I've heard Wes Bos has a great tutorial called "[Javascript 30](https://javascript30.com/)" where you complete 30 little projects in 30 days.  I'm going to give it a go since while I know both es6 and react, I never learned DOM apis. Also lets see if I can do it in 5 days.
 
 1. [drum kit](/js30/1)
 1. [css clock](/js30/2)
+1. [css variables](/js30/3)
+1. [array cardio 1](/js30/4)
 
 **misc whitepapers**
 
