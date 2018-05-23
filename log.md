@@ -6,7 +6,7 @@ permalink: /log/
 
 # Funemployment log
 
-**TV**
+**TV and Movies** 
 
 - [x] Atlanta Season 2
 
@@ -16,6 +16,10 @@ permalink: /log/
   - [ ] Season 9
 
 - [ ] Full Metal Alchemist: Brotherhood
+
+- [ ] The Gatekeepers (2013)
+
+- [ ] City of God
 
   
 
@@ -56,13 +60,13 @@ yes, i'll be taking [notes](/finance-notes)
   - [x] Introduction to stocks
   - [x] Shorting a stock
   - [x] Understanding company statements and capital structure
-  - [ ] Corporate metrics and valuation
-  - [ ] Life of a company -- from birth to death
-  - [ ] Dilution
-  - [ ] Mergers and acquisitions
-  - [ ] Leveraged buy-outs
-  - [ ] Bonds
-  - [ ] Corporate Banktruptcy
+  - [x] Corporate metrics and valuation
+  - [x] Life of a company -- from birth to death
+  - [x] Dilution
+  - [x] Mergers and acquisitions
+  - [x] Leveraged buy-outs
+  - [x] Bonds
+  - [x] Corporate Banktruptcy
 - Investment vehicles, insurance, and retirement (24 videos)
 - Money, banking and central banks (86 videos)
 - Options, swaps, futures, MBS, CDOs, and other derivatives (52 videos)
