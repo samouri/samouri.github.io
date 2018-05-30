@@ -66,3 +66,11 @@ let load _ =
 ;;
 ```
 
+**architecture**
+
+1. initialize game loop
+2. setup model of game world. disconnected from all visuals
+
+model:
+
+12 x 14
