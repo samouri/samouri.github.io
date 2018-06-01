@@ -9,17 +9,14 @@ permalink: /log/
 **TV and Movies**
 
 * [x] Atlanta Season 2
-
-* [ ] The Office Season
+* [x] The Office Season
 
   * [x] Season 8
-  * [ ] Season 9
-
+  * [x] Season 9
 * [ ] Full Metal Alchemist: Brotherhood
-
 * [ ] The Gatekeepers (2013)
-
 * [ ] City of God
+* [ ] Arrested Development Season 5
 
 **Learning**
 
@@ -76,7 +73,7 @@ yes, i'll be taking [notes](/finance-notes)
 
 **what is a caml**
 
-The intersection of functional programming and the web has been an interesting and chaotic space recently. Ever since college I've had an interest in OCaml and nowadays with Bucklescript and its sister project Reason, we can make super efficient webapps using it. The first project I wanted to build was an algorithm visualizer [vizzy](https://github.com/samouri/vizzy) but I quickly learned that it was too much to chew for a first go round. In order to start a bit smaller, I am currently working on making [Frogger using Bucklescript](/bucklefrog) [github source](https://github.com/FriteGames/buckle-frogger).
+The intersection of functional programming and the web has been an interesting and chaotic space recently. Ever since college I've had an interest in OCaml and nowadays with Bucklescript and its sister project Reason, we can make super efficient webapps using it. The first project I wanted to build was an algorithm visualizer [vizzy](https://github.com/samouri/vizzy) but I quickly learned that it was too much to chew for a first go round. In order to start a bit smaller, I am currently working on making.  I'm [writing about the process](/learning-bs) [Frogger using Bucklescript](/bucklefrog) [github source](https://github.com/FriteGames/buckle-frogger).
 
 **30 days of JS**
 
