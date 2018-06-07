@@ -6,9 +6,9 @@ permalink: /learning-bs/
 
 # BuckleFrog: learning OCaml and Bucklescript by building Frogger
 
-Ever since taking programming languages in college, I've been enamored with functional programming and the benefits that a type system like OCaml's has to offer. When writing Java programs, I'm surprised if my code runs without a NullPointerException, whereas I remember that my OCaml programs usually worked flawlessly on my first attempt to run them.
+Ever since taking  programming languages in college, I've been enamored with functional programming and the benefits that a type system like OCaml's has to offer. When writing Java programs, I'm surprised if my code runs without a NullPointerException, whereas I remember that my OCaml programs usually worked flawlessly on my first attempt to run them.
 
-All that said, I had never written anything complex in OCaml whereas I regularly try to solve real and challenging problems in Java and JavaScript.  I strongly believe that the best way to learn anything is by tackling fun projects, so to that end, here we go!
+
 
 [TOC]
 
@@ -22,7 +22,7 @@ Like most impatient developers, the first thing I did was I dive right into deve
 
 #### graphics
 
-I was able to determine that the game originally ran with raster graphics and resolution of 224 x 256 [^1].  By doing some calculations and also overlaying a ruler[^2] onto a screenshot of the game, I was able to determine that the screen is laid out on a grid of 14 columns and 16 rows.  The rows get used as follows:
+The 1981 Arcade version of Frogger ran with raster graphics and resolution of 224 x 256 [^1].  By doing some calculations and also overlaying a ruler[^2] onto a screenshot of the game, I was able to determine that the screen is laid out on a grid of 14 columns and 16 rows.  The rows get used as follows:
 
 - 1.5 rows for the game score
 - 1.5 rows for the end goal
@@ -33,11 +33,9 @@ I was able to determine that the game originally ran with raster graphics and re
 
 I found a couple of really great instructions online that go into depth explaining how gameplay works. One on 20goto0 [^3] and the other from gamefaqs [^4].  Heres a short summary of the key points:
 
-- Movement: while the game is laid out on a grid, everything within that grid moves on a pixel by pixel basis (continously).  By slowing down videos of Frogger being played, I could tell that the frog doesn't teleport, rather he moves exactly one `tileWidth` per jump and it takes about 100ms.
-
-- there are 12 lanes of equal height for the frog to jump through. There is also some space both above and below the playable area. This means that there is a _minimum_ of 12 lanes. Visually, goal zone looked like the only lane with an irregular height.
-
-- By taking. screenshot of the game being played on YouTube and then overlaying a few different grids, I was able to figure out the exact right number of rows and column
+- Movement: By slowing down videos of Frogger being played, I could tell that the frog doesn't teleport, rather he moves exactly one `tileWidth` per jump and it takes about 100ms. while the game is laid out on a grid, everything within that grid moves on a pixel by pixel basis (continously).
+- The first half of the lanes have cars that the frog must avoid.  The second half requires the frog to land on the floating logs and turtles.  When the frog is on a log (or turtle), the velocity of the frog is the velocity of the (log + frog), or "Lefrog". 
+- The frog has to land in all five coves in order to advance to the next level.
 
 
 
@@ -48,12 +46,12 @@ I'd never really played Frogger in the past and was surprised at every turn as I
 
 #### getting started: build system
 
-The first step is getting the whole build pipeline in place.  For this I used the standard [bsb](https://bucklescript.github.io/docs/en/new-project.html) compiler for transforming  `.ml` files to javascript. From there I set up [parcel](https://parceljs.org/) pointed at an `index.html` file to build the project.  Since we are using Canvas, there was no need to link any third party libs. I was really happy with this setup since every new save takes less than 100ms to compile.
+The first step is getting the whole build pipeline in place.  For this I used the standard [bsb](https://bucklescript.github.io/docs/en/new-project.html) setup in order to compile `.ml` files to javascript. From there I can use [parcel](https://parceljs.org/) pointed at my `index.html` file to build the project.  Since we are using Canvas, there is no need for any third party libs. I was really happy with this setup since every single save takes less than 100ms to compile.
 
-#### setting up the game loop
+#### **setting up the game loop**
 
 ```ocaml
-(* gameloop that gets called once per frame *)
+(* the gameloop. takes the rendering context and the world (game state) *)
 let rec gameloop ctx world = 
   (* first calc how much time has passed since the last frame *)
   let now = Js.Date.now () in
@@ -61,17 +59,15 @@ let rec gameloop ctx world =
   
   (* render all sprites to the canvas *)
   (render ctx world);
+  let nextWorld = (updateWorld ctx world) in
   
-  (* compute the next frame's state *)
-  let nextWorld = (stepWorld world dt) in
-  
-  (* set up the lastTime and queue the next update loop *)
+  (* set lastTime to now and queue the next gameloop *)
   lastTime := Js.Date.now ();
-  (Webapi.requestAnimationFrame (fun _ -> (gameloop ctx nextworld )))
+  (Webapi.requestAnimationFrame (fun _ -> (gameloop ctx nextWorld )))
 ;;
 
-(* load is very simple and just finds the canvas on the page,
-   grabs the 2d context, and then initiates the gameloop
+(* load finds the canvas on the page, grabs the 2d context, 
+   and then initiates the gameloop
  *)
 let load _ =
   let canvas_id = "canvas" in
@@ -87,7 +83,7 @@ let load _ =
   (gameloop context startWorld);
 ;;
 
-(* initate the gameloop once the page is ready *)
+(* call the load function when the page is ready *)
 let _ = Window.setOnLoad window load
 ```
 
