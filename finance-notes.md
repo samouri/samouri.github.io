@@ -44,6 +44,12 @@ $$
 | 2008 | 560k      | 334k       |
 | 2009 | 819k      | 370k       |
 
+### Housing
+
+**balance sheet**: essentially a table of assets and liabilities.
+
+
+
 ### Stocks and bonds
 
 **stock**: a share of a company. if you own stock then you own a percentage of the equity of that company. you are a part-owner. 

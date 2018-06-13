@@ -17,6 +17,7 @@ permalink: /log/
 * [ ] The Gatekeepers (2013)
 * [ ] City of God
 * [ ] Arrested Development Season 5
+* [x] Big Mouth
 
 **Learning**
 

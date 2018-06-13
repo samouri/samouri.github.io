@@ -8,8 +8,6 @@ permalink: /learning-bs/
 
 Ever since taking  programming languages in college, I've been enamored with functional programming and the benefits that a type system like OCaml's has to offer. When writing Java programs, I'm surprised if my code runs without a NullPointerException, whereas I remember that my OCaml programs usually worked flawlessly on my first attempt to run them.
 
-
-
 [TOC]
 
 ### Summary
@@ -18,11 +16,11 @@ The project is to implement retro style Frogger, adhering to the original game's
 
 ### Investigation
 
-Like most impatient developers, the first thing I did was I dive right into development with absolutely no plan.  At the point where I had a sprite that could move via arrow keys, I came to the realization that nothing was feeling quite right.  There are so many little nuanced questions I needed to answer in order to be able to create a Frogger clone that felt true.  Questions like whether the game runs on a grid or in "continuous" space, how many frames are there in the frog's jump animation.  When the frog jumps, does he *slide* or *teleport*.  What is the aspect ratio of the screen? How much space should each lane take up? How does collision detection work?  Is the strictness of collision detection different depending on if the frog is colliding with a log, turtle, alligator, car, or the end goals?  All of these questions (and more) needed answering.  I used many sources to try to piece together everything I could, and the details and sources are below:
+Like most impatient developers, the first thing I did was I dive right into development with absolutely no plan.  At the point where I had a sprite that could move via arrow keys, I came to the realization that nothing was feeling quite right.  There are so many little nuanced questions I needed to answer in order to be able to create a Frogger clone that felt true.  Questions like whether the game runs on a grid or in "continuous" space, how many frames are there in the frog's jump animation.  When the frog jumps, does he *slide* or *teleport*.  What is the aspect ratio of the screen? How much space should each lane take up? How does collision detection work?  Is the strictness of collision detection different depending on if the frog is colliding with a log, turtle, alligator, car, or the end goals?  All of these questions (and more) needed answering.  I used many sources to try to piece together everything I could.
 
 #### graphics
 
-The 1981 Arcade version of Frogger ran with raster graphics and resolution of 224 x 256 [^1].  By doing some calculations and also overlaying a ruler[^2] onto a screenshot of the game, I was able to determine that the screen is laid out on a grid of 14 columns and 16 rows.  The rows get used as follows:
+The 1981 Arcade version of Frogger ran with raster graphics and resolution of 224 x 256 [^1].  By doing some calculations and also overlaying a ruler[^2] onto a screenshot of the game, I was able to determine that the screen is laid out on a grid of 16 rows and 14 columns.  In order, the rows get used as follows:
 
 - 1.5 rows for the game score
 - 1.5 rows for the end goal
@@ -31,16 +29,12 @@ The 1981 Arcade version of Frogger ran with raster graphics and resolution of 22
 
 #### mechanics
 
-I found a couple of really great instructions online that go into depth explaining how gameplay works. One on 20goto0 [^3] and the other from gamefaqs [^4].  Heres a short summary of the key points:
+I found a couple of really great instructions online that go into depth explaining how gameplay works. One on 20goto0 [^3] and the other from gamefaqs [^4].  Heres a short summary:
 
 - Movement: By slowing down videos of Frogger being played, I could tell that the frog doesn't teleport, rather he moves exactly one `tileWidth` per jump and it takes about 100ms. while the game is laid out on a grid, everything within that grid moves on a pixel by pixel basis (continously).
-- The first half of the lanes have cars that the frog must avoid.  The second half requires the frog to land on the floating logs and turtles.  When the frog is on a log (or turtle), the velocity of the frog is the velocity of the (log + frog), or "Lefrog". 
+- The first half of the lanes have cars that the frog must avoid.  The second half requires the frog to land on the floating logs and turtles.  The frog can move while on a log. 
 - The frog has to land in all five coves in order to advance to the next level.
-
-
-
-
-I'd never really played Frogger in the past and was surprised at every turn as I learned just how nuanced the game really is. The first thing I tried doing was building it as fast as possible using squares as graphics but I quickly learned that there were so many more details and nuances that actually needed careful consideration and research to get right.  I was able to find a couple good descriptions of the game online ([1](https://gamefaqs.gamespot.com/snes/577129-frogger/faqs/7869),[2](http://www.20goto10.co.uk/frogger/instructions.html)) online as well as a [spritesheet](https://samouri.github.io/bucklefrog/frogger_sprites.ae354d37.png) which covered the graphics I would need.
+- In later stages, alligators and snakes are brought which increase the difficulty.
 
 ### Development
 
@@ -50,42 +44,51 @@ The first step is getting the whole build pipeline in place.  For this I used th
 
 #### **setting up the game loop**
 
+Most games have what is called the "game loop". It periodically updates the state of the game and renders the screen.  Heres roughly how it looks for Frogger. 
+
 ```ocaml
+let lastTime = ref 0;; (* for keeping track of how much time elapsed in between frames *)
+
 (* the gameloop. takes the rendering context and the world (game state) *)
 let rec gameloop ctx world = 
-  (* first calc how much time has passed since the last frame *)
-  let now = Js.Date.now () in
-  let dt = now -. !lastTime in
+  (* first calculate elapsed time *)
+  let dt = (Js.Date.now ()) -. !lastTime in
   
-  (* render all sprites to the canvas *)
   (render ctx world);
-  let nextWorld = (updateWorld ctx world) in
+  let nextWorld = (updateWorld world dt) in
   
   (* set lastTime to now and queue the next gameloop *)
   lastTime := Js.Date.now ();
   (Webapi.requestAnimationFrame (fun _ -> (gameloop ctx nextWorld )))
 ;;
-
-(* load finds the canvas on the page, grabs the 2d context, 
-   and then initiates the gameloop
- *)
-let load _ =
-  let canvas_id = "canvas" in
-  let canvas =
-    match document |> (Document.getElementById "canvas") with
-    | None  ->
-      (print_endline ("cant find canvas " ^ (canvas_id ^ " \n"));
-       failwith "fail")
-    | Some el -> el in
-  canvas |> (Element.setAttribute "height" ((string_of_int startWorld.height) ^ "px"));
-  canvas |> (Element.setAttribute "width" ((string_of_int startWorld.width) ^ "px"));
-  let context = CanvasRe.CanvasElement.getContext2d canvas in
-  (gameloop context startWorld);
-;;
-
-(* call the load function when the page is ready *)
-let _ = Window.setOnLoad window load
 ```
+
+### handling user input
+
+In Frogger there isn't really a notion of "left arrow pressed". Instead there was a joystick that could signal direction.  In order to emulate that, I map arrow key presses to a "direction" type:
+
+```ocaml
+(* laughably unsafe type conversion *)
+external toUnsafe : 'a -> < .. > Js.t = "%identity"
+
+type directionT = Left | Right | Up | Down;;
+type inputT = {
+  mutable direction: directionT option;
+};;
+let input = { direction = None };;
+
+(* Keydown event handler translates a key press to a direction *)
+let keydown (evt:Dom.event) =
+  match (toUnsafe evt)##keyCode with
+  | 38 | 32 | 87 -> input.direction <- Some Up
+  | 39 | 68 -> input.direction <- Some Right
+  | 37 | 65 -> input.direction <- Some Left
+  | 40 | 83 -> input.direction <- Some Down
+  | _ -> ()
+;;
+```
+
+#### To Be Continued
 
 ### sources
 
