@@ -67,6 +67,7 @@ yes, i'll be taking [notes](/finance-notes)
 * Money, banking and central banks (86 videos)
 * Options, swaps, futures, MBS, CDOs, and other derivatives (52 videos)
 * Current economics (38 videos)
+* [x] Personal Finance (12 videos)
 
 **what is a compiler**
 

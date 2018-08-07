@@ -105,3 +105,28 @@ $$
 **corporate loans vs. personal mortgage**: while a person usually pays interest and also tries to pay off their principal, a company usually pays interest only and at the end of the term pays the entire principal -- they do that by taking out a new loan for their original principal at a new rate.  So they sort-of never actually pay back the principal.  
 
 **treasury yield curve**: lending to the treasury is considered the least risky you can. There are t-bills, t-bonds, and t-notes. Bills are just IOUs that the treasury will pay you back that much plus interest, usually between one month and one year. notes are ones that are from one year to ten years. 10+ years are considered bonds. The yield curve is basically the graph that shows how much interest you will get for a how long of a loan you give the govt.  The trend is that the longer you let them keep it, the better the rate you get. One thing that also affects it is the popularity of the note (supply/demand)
+
+
+
+### Personal Finance
+
+**Traditional IRA**: IRA stands for individual retirement account. You can put up to 5k per month (6k if you are over 50).  You put money into the investment account _pretax_.  You can't take it out of the account without a penalty of until you are 59.5.  The tax is 10%. Also you don't get taxed on all of the "capital gains" from the investments in the account. When you end up withdrawing it you finally _do_ get taxed on it.  The two biggest wins are:
+
+1. deferred taxation and none on capital gains
+2. lower tax bracket when you finally do withdraw the money since you will be retired.
+
+**Roth IRA**: named after William Roth who was a senator in Delaware that helped shepherd this into creation. The difference is that Roth IRAs do not defer tax payment. You pay taxes initially but then you _do not_ need to pay taxes when you withdraw. What this means is that you get to fully skip capital gains tax while your money grows.  One other big benefit of Roth IRAs is that you do not get penalized for taking your principal out early before you are 59.5.
+
+**401(k)**: very similar to a traditional IRA. Taxes are deferred. Here are the differences
+
+- Much higher limit (around 20k instead of 5k).
+- Organized by your employer, they will also often match parts of your investments, and they also manage the investments.
+- Taken our before your paycheck.
+
+**Open-end mutual fund**: Someone or some group thinks they are good at managing money. They can market themselves to the public and sell shares in themselves. As their bucket of money (investments) goes up and down so does the value of the shares. **AUM** = assets under management. **NAV** = Net Asset Value = $$\frac{assets - liabilities}{shares}$$. When a people sell their shares, it means the fund needs to give them back money and then the pool gets smaller but the NAV doesn't change.
+
+**Closed-end mutual fund**: There is only one time period, at fund creation time, that the fund markets to the public.  Then once the fund is created shares cannot be created or redeemed from the fund. Liquidity is created by buying/selling on secondary markets. Its a big advantage for the fund creator since they don't need to keep any cash on hand to pay back shareholders that want to redeem.
+
+**Exchange traded funds (ETFs)**: it is a combo of closed/open mutual funds.  Its like open-end except only a few approved big organizations are allowed to buy/sell big blocks of shares all at once.  It is beneficial for the fund not to have to deal with a ton of small transactions and instead deal with a few massive transactions.  Those approved corporations can then buy/sell the shares on secondary markets (stock market etc).  In general this creates reduced fees + less overhead in general. They also have a ton of liquidity: you can trade at any second of the day instead of just at the end of it like open-end ones.
+
+**Ponzi schemes**: as long as more money comes in then oe
