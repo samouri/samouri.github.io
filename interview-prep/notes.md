@@ -230,41 +230,127 @@ class Array {
    
 
 3. Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer. NOTE: One or two additional variables are fine. An extra copy of the array is not. 
-
-   ```typescript
+```typescript
    // assume c-style string again? remove means shift everything to the left?
    function dedupe( str ) {
-       for (let i = 0; i < str.length; i++ ) {
-           for (let j = i+1; j < str.length; j++ ) {
-               
+       let tail = 1;
+       for (let i = 1; i < str.length; i++ ) {
+           let dupe = false;
+           for (let j = 0; j < tail; j++ ) {
+               if ( str[i] === str[j] ) {
+                   console.error('DUPE', i,j)
+                   dupe = true;
+               }
+           }
+           if ( ! dupe ) {
+               str [ tail ] = str[i];
+               tail++;
            }
        }
+       str[tail] = null;
+       return str;
    }
-   
-   // unshift all the elements
-   function remove(arr, position) {
-       if ( position >= arr.length ) {
-           throw new Exception(`position is out of bounds of array ${position}`)
-       }
-       for ( let i = position; i < arr.length-1; i++) {
-           arr[i] = arr[i+1];
-       }
-       arr[ arr.length-1] = null; // shortens string by putting a new null in there!
-   }
+```
+3.1 FOLLOW UP: Write the test cases for this method. 
+
+   ```typescript
+   dedupe(null); // null
+   dedupe([null]); // empty string
+   dedupe(['a', null]); // single char string
+   dedupe(['a','b','c','d']) // no dupes
+   dedupe(['a', 'a', null]); // two char dupe string
+   dedupe(['a', 'a', 'a', 'b', 'b', 'c', 'c', 'c', null]); // all contiguous dupes
+   dedupe(['a','b','a','b']) // alternating dupes
    ```
 
    
 
-   1. FOLLOW UP: Write the test cases for this method. 
+4. Write a method to decide if two strings are anagrams or not.
 
-4. Write a method to decide if two strings are anagrams or not. 
-
+```typescript
+// sorting them should easily tell us if they have the same characters or not.
+function isAnagram( str1, str2 ) {
+    const sorted1 = Array.from( str1 ).sort();
+    const sorted2 = Array.from( str2 ).sort();
+    return sorted1 === sorted2;
+}
+```
 5. Write a method to replace all spaces in a string with ‘%20’. 
+
+```typescript
+// using stdlib
+function encodeSpaces( str ) {
+  return str.replace(/ /g, '%20');
+}
+```
 
 6. Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place? 
 
-7. Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0. 
+```typescript
+// image is a 2D array
+// e.g: 
+//  1 2 3     7 4 1
+//  4 5 6 --> 8 5 2
+//  7 8 9     9 6 3
+// -----------------
 
-8. Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (i.e., “waterbottle” is a rotation of “erbottlewat”). 
+// I HATE THIS.. always been the hardest for me.
+function rotate90( img ) {
+    
+}
+```
 
-9. 
+1. Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0. 
+
+```typescript
+function zeroRow( arr2d, row ) {
+    if ( ! arr2d || ! row ) {
+        throw new Error(`Must supply both a 2d array and a row`)
+    }
+    for ( let col = 0; col < arr2d[row].length; col++) {
+        arr2d[row][col] = 0;
+    }
+}
+
+function zeroCol( arr2d, col ) {
+    if ( ! arr2d || ! col ) {
+        throw new Error(`Must supply both a 2d array and a col`)
+    }
+    for ( let row = 0; row < arr2d.length; row++) {
+        arr2d[row][col] = 0;
+    }
+}
+
+function infectiousZero( arr2d ) {
+    if ( ! Array.isArray(arr2d) ) {
+        throw new Error(`Must supply an array to infectiousZero`)
+    }
+    const rows = [];
+    const cols = [];
+    for ( let row = 0; row < arr2d.length; row++) {
+        for ( let col = 0; col < arr2d[row].length; col++ ) {
+            if ( arr2d[row][col] === 0 ) {
+                rows.push(row);
+                cols.push(col);
+            }
+        }
+    }
+    rows.forEach( row => zeroRow(arr2d, row));
+    cols.forEach( col => zeroCol(arr2d, col));
+}
+```
+
+
+
+1. Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (i.e., “waterbottle” is a rotation of “erbottlewat”). 
+
+```typescript
+function isRotation(str1, str2) {
+    if ( ! str1 || ! str2 || str1.length !== str2.length ) {
+        return false;
+    }
+    
+    return isSubstring( str1+str1, str2 )
+}
+```
+
