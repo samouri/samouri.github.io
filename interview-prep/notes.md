@@ -122,7 +122,7 @@ class LinkedListIterative {
     }
 }
 
-// more difficult to insert at positions.
+// more difficult to insert at positions?
 class LinkedListRecursive {
     next = null;
     
@@ -161,14 +161,47 @@ class LinkedListRecursive {
 }
 ```
 
-**Standard List (Array)**
+**Stacks and Queues**
 
 ```typescript
-class Array {
-    data = [];
-	length = 0;
-    add() {
+// FIFO
+class Stack {
+    top = null;
+    pop() {
+        if ( this.top ) {
+            let item = top.value;
+            top = top.next;
+            return item;
+        }
+    }
+    
+    push( value ) {
+        this.top = {value, next: this.top};
+    }
+}
+
+// LIFO
+class Queue {
+    let first = null;
+	let last = null;
+
+    append( value ) {
+        if ( ! this.first ) {
+            this.first = this.last = { value };
+            return;
+        }
+        this.last.next = { value };
+        this.last = last.next;
+    }
+
+    shift() {
+        if ( ! first ) {
+            throw new Error(`Cannot call shift on an empty queue!`)
+        }
         
+        let value = first.value;
+        first = first.next;
+        return value;
     }
 }
 ```
@@ -515,7 +548,7 @@ function findBeginning( head ) {
         throw new Error(`Must provide a linkedlist node, was given ${head}`);
     }
     if ( ! head.next ) {
-        throw new Error(`There is no circle in the linkedlist`);
+        throw new Error(`There is no cycle in the linkedlist`);
     }
     let tortoise = head;
     let hare = head;
@@ -528,7 +561,7 @@ function findBeginning( head ) {
     }
     
     if ( hare !== tortoise ) {
-        throw new Error(`There is no error in this linkedlist`);
+        throw new Error(`There is no cycle in this linkedlist`);
     }
     
     tortoise = head;
@@ -541,3 +574,4 @@ function findBeginning( head ) {
 }
 ```
 
+##### Chapter 3: Stacks and Queues
