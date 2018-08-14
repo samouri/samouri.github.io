@@ -578,15 +578,142 @@ function findBeginning( head ) {
 
 1. Describe how you could use a single array to implement three stacks. 
 
-2. How would you design a stack which, in addition to push and pop, also has a function min which returns the minimum element? Push, pop and min should all operate in O(1) time. 
+```typescript
+const STACK_MAX_SIZE = 100; // what should we make this?
 
-3. Imagine a (literal) stack of plates. If the stack gets too high, it might topple. There- fore, in real life, we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this. SetOf- Stacks should be composed of several stacks, and should create a new stack once the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack (that is, pop() should return the same values as it would if there were just a single stack). 
+class ThreeStacks {
+    arr = new Array(STACK_MAX_SIZE * 3);
+    
+    stackIndex = [0, 0, 0];
+    
+    idx(stackNum) {
+        return (STACK_MAX_SIZE * stackNum) + stackindex[stackNum];
+    }
+    
+    push(stackNum, value) {
+        if (this.stackIndex(stackNum) === STACK_MAX_SIZE) {
+            throw new Error(`TODO: must implement resizing`);
+        }
+        
+        arr[this.idx(this.stackNum)] = value;
+        this.stackIndex[stackNum]++;
+    }
+    
+    pop(stackNum) {
+        if (this.idx(stackNum) === 0) {
+            throw new Error(`Cannot pop from an empty stack`);
+        }
+        
+        this.stackNum[stackNum]--;
+        return arr[this.idx(stackNum)]
+    }
+}
+```
+
+
+
+1. How would you design a stack which, in addition to push and pop, also has a function min which returns the minimum element? Push, pop and min should all operate in O(1) time. 
+
+   ```typescript
+   const last = arr => arr[ arr.length -1 ];
+   
+   class Stack {
+       arr = [];
+       mins = [];
+       
+       push(value) {
+           const ret = arr.push(value);
+           let min = Math.min( last(mins), value);
+           mins.push(min);
+           return ret;
+       }
+       
+       min() {
+           if (arr.length === 0) {
+               throw new Error(`Cannot call min of an empty Stack`);
+           }
+           
+           return last(mins);
+       }
+       
+       pop() {
+           if ( arr.length === 0) {
+               throw new Error(`Cannot call min of an empty Stack`);
+           }
+           mins.pop;
+           return arr.pop();
+       }
+   }
+   ```
+
+   
+
+2. Imagine a (literal) stack of plates. If the stack gets too high, it might topple. Therefore, in real life, we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this. SetOfStacks should be composed of several stacks, and should create a new stack once the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack (that is, pop() should return the same values as it would if there were just a single stack). 
 
    FOLLOW UP 
 
    Implement a function popAt(int index) which performs a pop operation on a specific sub-stack. 
 
-4. In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (e.g., each disk sits on top of an even larger one). You have the following constraints: 
+   ```typescript
+   const MAX_STACK_SIZE = 3;
+   
+   const last = arr => arr[arr.length-1];
+   const deleteAt = (arr, idx) => arr.splice(idx, 1);
+   
+   class SetOfStacks {
+       const stacks = [];
+   
+       push(value) {
+           // if set of stacks is fully empty
+           if ( this.stacks.length === 0 ) {
+               this.stacks.push( [ value ] );
+               return value;
+           }
+           
+           // if the latest stack we are adding to is full and we must add a new stack to the set
+           if (last(this.stacks).length === MAX_STACK_SIZE) {
+               this.stacks.push(  [ value] );
+               return value;
+           }
+           
+           // else, if there is room in the last stack
+           return last(last(this.stacks)).push(value);
+       }
+       
+       pop() {
+           if ( this.stacks.length === 0 ) {
+               throw new Error(`Cannot pop an items off of an empty stack`);
+           }
+           
+           const poppped = last(this.stacks).pop();
+           // if we popped off the only element of the last stack then remove the whole stack
+           if ( last(this.stacks).length === 0) {
+               this.stacks.pop();
+           }
+           
+           return popped;
+       }
+   
+       // tradeoff of space vs. time. may not reclaim space if do not move everything.
+       // but will be costly to shift everything.
+   	// decided on easier one to implement: faster and ignore extra spaces.
+       popAt(idx) {
+           if ( ! this.stacks[idx] ) {
+               throw new Error(`Substack does not exist: ${idx}`);
+           }
+           
+           const popped = this.stacks[idx].pop();
+           if ( this.stacks[idx].length === 0) {
+               deleteAt(this.stacks, idx);
+           }
+           return popped;
+       }
+   }
+   ```
+
+   
+
+3. In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (e.g., each disk sits on top of an even larger one). You have the following constraints: 
 
    (A) Only one disk can be moved at a time. 
 
@@ -596,6 +723,6 @@ function findBeginning( head ) {
 
    Write a program to move the disks from the first rod to the last using Stacks. 
 
-5. Implement a MyQueue class which implements a queue using two stacks. 
+4. Implement a MyQueue class which implements a queue using two stacks. 
 
-6. Write a program to sort a stack in ascending order. You should not make any assump- tions about how the stack is implemented. The following are the only functions that should be used to write this program: push | pop | peek | isEmpty. 
+5. Write a program to sort a stack in ascending order. You should not make any assump- tions about how the stack is implemented. The following are the only functions that should be used to write this program: push | pop | peek | isEmpty. 
