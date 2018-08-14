@@ -723,6 +723,96 @@ class ThreeStacks {
 
    Write a program to move the disks from the first rod to the last using Stacks. 
 
+   ```typescript
+   /*               TOWER OF HANOI
+    * ----------------------------------------------
+    *
+    *   -										-
+    *  ---    empty empty -->  empty empty    ---
+    * -----								  -----
+    */
+   function solve( rods ) {
+       move(rods[0].length, rods[0], rods[1], rods[2]);
+   }
+   
+   function move(n, fromPeg, toPeg, aux ) {
+       // base case move nothing
+       if ( n === 0) {
+           return;
+       }
+       // otherwise move everything except the last one to the spare tower
+       move(n-1, fromPeg, aux, toPeg);
+       // now there is the biggest one left in the toPeg, n-1 in the aux, so we can directly move the big one fromPeg toPeg
+       toPeg.push(fromPeg.pop());
+       // now the n-1 from the aux to the toPeg using the fromPeg as an aux (since it is empty)
+       move(n-1, aux, toPeg, fromPeg);
+   }
+   ```
+
+   
+
 4. Implement a MyQueue class which implements a queue using two stacks. 
 
-5. Write a program to sort a stack in ascending order. You should not make any assump- tions about how the stack is implemented. The following are the only functions that should be used to write this program: push | pop | peek | isEmpty. 
+   ```typescript
+   class MyQueue {
+       stack1 = []; // push all enqueued things here. until the first dequeue
+       stack2 = []; // on first dequeue, push all of stack1 here, then we can pop until empty.
+       
+       rollover() {
+           while(stack1.length > 0) {
+               stack2.push(stack1.pop);
+           }
+       }
+       
+       enqueue( value ) {
+           stack1.push(value);
+       }
+       
+       dequeue() {
+           if (stack1.length === 0 && stack2.length === 0) {
+               throw new Error(`Cannot call dequeue on an empty MyQueue`);
+           }
+           
+           if ( stack2.length === 0 ) {
+               this.rollover();
+           }
+           
+           return stack2.pop();
+       }
+       
+       peek() {
+           if (stack1.length === 0 && stack2.length === 0) {
+               throw new Error(`Cannot call dequeue on an empty MyQueue`);
+           }
+           
+           if ( stack2.length === 0 ) {
+               this.rollover();
+           }
+           
+           return stack2.peek();
+       }
+       
+       size() {
+           return stack1.length + stack2.length;
+       }
+   }
+   ```
+
+1. Write a program to sort a stack in ascending order. You should not make any assumptions about how the stack is implemented. The following are the only functions that should be used to write this program: `push`, `pop`, `peek`, `isEmpty` 
+
+```typescript
+// Uses O( n^2 ) time complexity -- does not sort in place, returns a new sorted stack.
+// Uses O( 2 * n ) space.
+function sort(stack) {
+    const sorted = [];
+    while (stack.length > 0) {
+        const tmp = stack.pop();
+        while ( sorted.length > 0 && sorted.peek() > tmp ) {
+            stack.push(sorted.pop());
+        }
+        sorted.push(tmp);
+    }
+    return sorted;
+}
+```
+
