@@ -177,7 +177,7 @@ class Array {
 
 ### Cracking the Coding Interview
 
-##### Chapter 1
+##### Chapter 1: arrays and strings
 
 1. Implement an algorithm to determine if a string has all unique characters. What if you can not use additional data structures?
 
@@ -351,6 +351,193 @@ function isRotation(str1, str2) {
     }
     
     return isSubstring( str1+str1, str2 )
+}
+```
+
+##### Chapter 2: Linked Lists
+
+1. Write code to remove duplicates from an unsorted linked list. 
+
+   1. FOLLOW UP: How would you solve this problem if a temporary buffer is not allowed? 
+
+   ```typescript
+   // operator conditions
+   // falsy args --> error
+   // assumption: second will always be a set
+   // falsy --> throw error
+   
+   // test cases
+   // 1 -> 1
+   // 1,1 -> 1
+   // 1,2,3,1,2 -> 1,2,3
+   // 1,2,3 -> 1,2,3
+   function removeDupes(node, set = new Set()) {
+       if (! node ) {
+           throw new Error(`must provide head node as the first arg, but was given ${node}`)
+       }
+       
+       if ( ! node.next ) {
+           return;
+       }
+       
+       set.add(node.value);
+       while (node.next && set.has(node.next.value )) {
+           node.next = node.next.next;
+       }
+       
+       // short circuit if we ran out of nodes in the while loop.
+       if ( ! node.next ) {
+           return;
+       }
+       
+       return removeDupes(node.next, set);
+   }
+   
+   // FOLLOW-UP
+   function removeNodesWithVal(node, val) {
+       if ( ! node ) {
+           return;
+       }
+       
+       while (node.next) {
+           if ( node.next.value === val) {
+               node.next = node.next.next;
+           } else {
+               node = node.next;
+           }
+       }
+   }
+   
+   function removeDupes(node) {
+       while (node.next) {
+           removeNodesWithVal(node, node.value);
+           node = node.next;
+       }
+   }
+   ```
+
+   
+
+2. Implement an algorithm to find the nth to last element of a singly linked list. 
+
+```typescript
+// arg checks:
+// ------------
+// falsy node --> error
+// non-number n --> error, negative n --> error
+
+// test cases
+// -----------
+// undefined, 2 --> throw
+// [1,2,3], -1 --> throw
+// [1,2,3], 0 --> 3
+// [1,2,3], 1 --> 2
+// [1,2,3], 2 --> 1
+// [1,2,3], 3 --> error!
+// [], 0 --> error
+
+function nthToLast( node, n) {
+    if ( ! node || ! Number.isFinite(n) || n < 0 ) {
+        throw new Error(`invalid params provided`);
+    }
+    
+    let current = node;
+    let headstart = node;
+    let i = 0;
+    for (let i = 0; i < n; i++) {
+        if (!headstart) {
+            throw new Error(`list is not long enough to get the nth element: ${n}`)
+        }
+        headstart = headstart.next;      
+    }
+    
+    while (headstart.next) {
+        headstart = headstart.next;
+        current = current.next;
+    }
+    return current;
+}
+```
+
+1. Implement an algorithm to delete a node in the middle of a single linked list, given only access to that node. 
+
+```typescript
+/* test cases
+ * -----------
+ * falsy --> error
+ * 1 --> ...? cannot be done?
+ * 1,2 --> 2
+ * 1,2,3 --> 2,3
+ */
+function deleteNode(node) {
+    if ( ! node ) {
+        throw new Error(`Must be given a linked list node as the first argument`);
+    }
+    
+    if ( ! node.next ) {
+        throw new Error(`Cannot remove the last node in the list`);
+    }
+    
+    node.value = node.next.value;
+    node.next = node.next.next;
+}
+```
+
+1. You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1’s digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list. 
+
+```typescript
+const ZERO = { value: 0 };
+function add(node1 = ZERO, node2 = ZERO, c = 0) {
+    if ( ! node1 || ! node2 || ! node1.value || ! node2.value ) {
+        throw new Error(`Must provide two linkedlist nodes`)
+    }
+    
+    const value = (node1.value + node2.value + c) % 10;
+    const carry = Math.floor((node1.value + node2.value + c) / 10);
+    const next = (node1.next || node2.next) 
+    	? add( node1.next, node2.next, carry)
+        : null;
+    
+    return { value, next };
+}
+```
+
+1. Given a circular linked list, implement an algorithm which returns node at the beginning of the loop. 
+
+```typescript
+/* Test Cases
+ * ----------
+ * 1,2,3,4,2.... --> 2
+ * 1,1... --> 1
+ */
+function findBeginning( head ) {
+    if ( ! head || ! head.value ) {
+        throw new Error(`Must provide a linkedlist node, was given ${head}`);
+    }
+    if ( ! head.next ) {
+        throw new Error(`There is no circle in the linkedlist`);
+    }
+    let tortoise = head;
+    let hare = head;
+    while ( hare.next != null && hare.next.next !== null ) {
+        tortoise = tortoise.next;
+        hare = hare.next.next;
+        if ( tortoise === hare) {
+            break;
+        }
+    }
+    
+    if ( hare !== tortoise ) {
+        throw new Error(`There is no error in this linkedlist`);
+    }
+    
+    tortoise = head;
+    while( hare !== tortoise ) {
+        hare = hare.next;
+        tortoise = tortoise.next;
+    }
+    console.error(tortoise, hare)
+    return tortoise;
 }
 ```
 
