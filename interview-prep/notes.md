@@ -206,6 +206,155 @@ class Queue {
 }
 ```
 
+**Trees**
+
+```typescript
+function assertValue( val )  {
+    if ( ! val ) {
+        throw new Error(`BST Expects a number`);
+    }
+}
+
+class BinarySearchTree {
+    constructor( value, { left=null, right=null } = {} ) {
+        assertValue(value);
+        
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+    
+    add( value ) {
+        assertValue(value);
+        
+        // value is less, then put on the left
+        if ( value < this.value ) {
+            if ( this.left === null) {
+                this.left = new BinarySearchTree(value);
+            } else {
+                this.left.add(value);
+            }
+            return;
+        }
+        
+        // value is greater, than put on the right
+        if ( this.right === null) {
+			this.right = new BinarySearchTree(value);
+        } else {
+			this.right.add(value);
+        }
+    }
+    
+    delete( value, parent = null ) {
+        // root special case.
+        if ( parent === null && this.value === value ) {
+            if ( ! this.left && ! this.right ) {
+                throw new Error(`bst does not contain value to delete: ${value}`);
+            }
+            if ( this.left ) {
+                this.value = this.left.max();
+                this.left.delete(this.value, this);
+            } else if ( this.right ) {
+                this.value = this.right.min();
+                this.right.delete(this.value, this);
+            }
+            return;
+        }
+        
+        
+        // non-root nodes
+        if ( value === this.value ) {
+            if ( this.left !== null && this.right !== null) {
+                const movedValue = this.left.max();
+                this.value = movedValue; // temporarily broken state b/c of a dupe.
+                this.left.delete(movedValue, this);
+            } else {
+                const branch = parent.left === this ? 'left' : 'right';
+                const onlyChild = this.left ? this.left : this.right;
+                parent[branch] = onlyChild;
+            }
+        }
+        
+        if ( value > this.value ) {
+            if ( this.right ) {
+                this.right.delete(value, this);
+            } else {
+                throw new Error(`value not found in bst: ${value}`);
+            }
+            return;
+        }
+        
+        if ( this.left ) {
+            this.left.delete(value, this);
+        } else {
+            throw new Error(`value not found in bst: ${value}`);
+        }
+    }
+    
+    max() {
+        if ( this.right ) {
+            return this.right.max();
+        }
+        return this.value;
+	}
+    
+    min() {
+        if ( this.left ) {
+            return this.left.min();
+        }
+        return this.value;
+    }
+    
+    height(d = 0) {
+        let l = d;
+        let r=d;
+        if ( this.left ) {
+            l = this.left.height(d+1);
+        }
+        if ( this.right ) {
+            r = this.right.height(d+1);
+        }
+        
+        return Math.max(l,r);
+    }
+        
+    visitInOrder(fn, node=this) {
+        if ( node.left ) { 
+            node.visitInOrder(fn, node.left);
+        }
+        fn(node.value);
+        if( node.right ) {
+            node.visitInOrder(fn, node.right);
+        }
+    }
+    
+    visitPostOrder(fn, node=this) {
+        if ( node.left ) { 
+            node.visitPostOrder(fn, node.left);
+        }
+        if( node.right ) {
+            node.visitPostOrder(fn, node.right);
+        }
+        fn(node.value);
+    }
+    
+    visitPreOrder(fn, node=this) {
+        fn(node.value);
+        if ( node.left ) { 
+            node.visitPreOrder(fn, node.left);
+        }
+        if( node.right ) {
+            node.visitPreOrder(fn, node.right);
+        }
+    }
+}
+
+// ---------------
+// Graph Functions
+// ----------------
+
+```
+
 
 
 ### Cracking the Coding Interview
@@ -816,3 +965,188 @@ function sort(stack) {
 }
 ```
 
+##### Chapter 4: Trees and Graphs
+
+1. Implement a function to check if a tree is balanced. For the purposes of this question, a balanced tree is defined to be a tree such that no two leaf nodes differ in distance from the root by more than one.
+
+   ```typescript
+   function isBalanced( root ) {
+       if ( ! root ) {
+           return true;
+       }
+       
+       return (maxDepth(root) - minDepth(root)) <= 1;
+   }
+   
+   function maxHeight(node) {
+       if ( ! node ) {
+           return 0;
+       }
+       
+       return 1 + Math.max(maxHeight(node.left), maxHeight(node.right));
+   } 
+   
+   function minHeight(node) {
+       if ( ! node ) {
+           return 0;
+       }
+       
+       return 1 + Math.min(minHeight(node.left), minHeight(node.right));
+   } 
+   ```
+
+2. Given a directed graph, design an algorithm to find out whether there is a route between two nodes. 
+
+```typescript
+/*
+ * 
+ * A -> B 
+ *		|-> C -> G
+ *		|->	D
+ *
+ * // A,D --> true
+ * 
+ */
+function connected(a, b) {
+    let seenB = false;
+    bfs( a, node => {
+        if ( node === b) {
+            seenB = true;
+        }
+    } );
+    
+    return seenB;
+}
+
+// bfs implementation w/ visitor pattern
+function bfs(node, fn) {
+    // implement bfs.
+    let visited = new Set();
+    let to_visit = [a];
+    while ( to_visit.length !== 0 ) {
+        const curr = to_visit.pop();
+        fn(curr);
+        
+        visited.add(curr);
+        for ( const sibling of curr.sublings() ) {
+            if ( ! visited.has(sibling)) {
+                to_visit.push(sibling);
+            }
+        }
+    }
+    return;
+}
+```
+
+
+
+1. Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height. 
+
+```typescript
+// test case
+// --------
+//
+// idx =  0  1  2   3   4    5
+// arr = [2, 7, 20, 99, 100, 5000]
+
+// tree = 
+//       20
+//   2        100
+// 7 null    99 5000
+// 
+function makeBalancedBST(arr, start=0, end=arr.length-1) {
+    if ( ! arr ) {
+        throw new Error(`Must be given array, but was given: ${arr}`);
+	}
+    
+    if ( start > end ) {
+        return null;
+    }
+    
+    if ( start === end ) {
+        return new BinarySearchTree(arr[start]);
+    }
+    
+    let mid = start + Math.floor((end-start)/2);
+    let node = new BinarySearchTree(arr[mid]);
+    node.left = makeBalancedBST(arr, start, mid-1);
+    node.right = makeBalancedBST(arr, mid+1, end);
+    
+    return node;
+}
+
+```
+
+
+
+1. Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (i.e., if you have a tree with depth D, you’ll have D linked lists). 
+2. Write an algorithm to find the ‘next’ node (i.e., in-order successor) of a given node in a binary search tree where each node has a link to its parent. 
+3. Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not necessarily a binary search tree. 
+4. You have two very large binary trees: T1, with millions of nodes, and T2, with hun- dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1. 
+5. You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value. Note that it can be any path in the tree - it does not have to start at the root. 
+
+### Misc. Problems
+
+**Josephus**
+
+People are standing in a circle waiting to be executed. Counting begins at a specified point in the circle and proceeds around the circle in a specified direction. After a specified number of people are skipped, the next person is executed. The procedure is repeated with the remaining people, starting with the next person, going in the same direction and skipping the same number of people, until only one person remains, and is freed.
+
+The problem — given the number of people, starting point, direction, and number to be skipped — is to choose the position in the initial circle to avoid execution.
+
+```typescript
+// solution idea: 
+// 1. make a linked list with values of the index of the people. reverse if dir = -1.
+// 2. iterate through list (skipping n values per hop) removing all the dead people as you find them.
+// 3. last node remaining contains the safe index.
+
+// precondition n > 0
+const makeLList = n => {
+    const head = { value: 1 };
+    
+    let node = head;
+    while ( node.value < n) {
+        node.next = { value: node.value+1 };
+        node = node.next;
+    }
+
+    // make the cycle
+    node.next = head;
+    
+    return head;
+}
+
+const nth( head, n) {
+    let i = 0;
+    let curr = head;
+    while ( i < n) {
+        curr = curr.next;
+	}
+    
+    return curr;
+}
+
+// dir can be 1 or -1.
+function solve(numPeople, startIndex, dir, skip) {
+    const peeps = makeLList(numPeople); 
+    // TODO: reverse ll if dir === -1
+    let current = nth(peeps)
+    while ( current.next != current ) {
+        const prevToKill = nth(current, skip);
+        prevToKill.next = prevToKill.next.next;
+    }
+    
+    return current.value;
+}
+
+// ACTUAL SOLUTION IS RECURSIVE MATH INSTEAD.
+```
+
+**Realtime Spell Checker**
+
+**Find all words in a Boggle Board**
+
+**Find the sqrt of a number using binary search and only +-/***
+
+**tell if something is a palindrom.  FOLLOW UP: find the largest palindrome within a string**
+
+**how many ways to make a dollar out of coins**
