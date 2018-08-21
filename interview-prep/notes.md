@@ -1316,3 +1316,70 @@ function merge( arr1, arr2 ) {
 **tell if a string is a palindrome.  FOLLOW UP: find the largest palindrome within a string**
 
 **how many ways to make a dollar out of coins**
+
+```typescript
+// given the coins worth: 1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p),
+// how many ways can you make 2 dollars?
+
+let coins = [1, 2, 5, 10, 20, 50, 100, 200 ].reverse();
+function countWays( amt=200, index = 0, memo = new Map() ) {
+    if ( amt === 0 ) {
+        return 1;
+    }
+    if ( index >= coins.length ) {
+		return 0;
+    }
+    
+    const key = `${amt}-${index}`;
+    if ( memo.has(key)) {
+        return memo.get(key);
+    }
+    
+    let ways = 0;
+    if ( coins[index] <= amt ) {
+        ways += countWays( amt - coins[index], index, memo );
+    }
+    ways += countWays( amt, index + 1, memo);
+    memo.set(keys,ways);
+    return ways;
+}
+```
+
+**binary search**
+
+```typescript
+function binarySearch(arr, el, compare_fn) {
+    let low = 0;
+    let hi = arr.length - 1;
+    while low <= high) {
+        var mid = (low + hi) / 2;
+        var cmp = compare_fn(el, arr[mid]);
+        if (cmp > 0) {
+            low = k + 1;
+        } else if(cmp < 0) {
+            hi = k - 1;
+        } else {
+            return k;
+        }
+    }
+    return -1;
+}
+```
+
+**compute all subsets**
+
+```typescript
+function getSubsets( arr, i = 0, buffer=[], all=[[]] ) {
+    if ( i >= arr.length ) {
+        return all;
+    }
+    
+    const withItem = buffer.slice(0).concat([arr[i]]);
+    const withoutItem = buffer.slice(0);
+    all.push(withItem);
+   	getSubsets(arr, i+1, withItem, all);
+    getSubsets(arr, i+1, withoutItem, all);
+    return all;
+}
+```
+
