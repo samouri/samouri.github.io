@@ -10,13 +10,12 @@ while prepping for software engineering interviews.
 
 **Why did I leave Automattic?**
 
-Automattic was perfect in a lot of ways. I got to work on interesting problems, with interesting people,
-travel all over the world, and participate in the larger open source community.
+Automattic was perfect in a lot of ways. I got to work on interesting problems, with interesting people, travel all over the world, and participate in the larger open source community.
 
 The driving reason for why I left is the company's fully distributed nature.
 After working remote for a couple of years, I just started missing people.
 Going to coworking offices isn't really my cup of tea
-I have a feeling that maybe at a different stage of life I'd enjoy it more, but for right now.
+I have a feeling that maybe at a different stage of life I'd enjoy it more.
 
 There were a few other issues that weren't as much of dealbreakers that
 contributed to my decision to quit.  One of the big ones is that I
@@ -25,10 +24,9 @@ at the company contributed to a lack of focus on long term, difficult projects.
 
 **Why did I leave Amazon?**
 
-Amazon was a whirlwind to work for.  I actually really enjoyed the work there.
+Amazon was a whirlwind to work for.  I actually really enjoyed it there.
 I felt like we were truly on the cutting edge and that the company (as well as my team)
-was innovating in many respects. I was witness to some major successes 
-and also some specatacular failures.
+was innovating in many respects. I was witness to some major successes and also some spectacular failures.
 
 There were a couple reasons I left:
 
@@ -211,7 +209,7 @@ class Queue {
 ```typescript
 function assertValue( val )  {
     if ( ! val ) {
-        throw new Error(`BST Expects a number`);
+        throw new Error(`BST Expects a number, was given: ${ val }`);
     }
 }
 
@@ -389,8 +387,6 @@ class BinarySearchTree {
    }
    ```
 
-   
-
 2. Write code to reverse a C-Style String. (C-String means that “abcd” is represented as five characters, including the null character.)
 
    ```typescript
@@ -408,8 +404,6 @@ class BinarySearchTree {
        arr[j] = temp;
    }
    ```
-
-   
 
 3. Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer. NOTE: One or two additional variables are fine. An extra copy of the array is not. 
 ```typescript
@@ -597,8 +591,6 @@ function isRotation(str1, str2) {
        }
    }
    ```
-
-   
 
 2. Implement an algorithm to find the nth to last element of a singly linked list. 
 
@@ -795,8 +787,6 @@ class ThreeStacks {
    }
    ```
 
-   
-
 2. Imagine a (literal) stack of plates. If the stack gets too high, it might topple. Therefore, in real life, we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this. SetOfStacks should be composed of several stacks, and should create a new stack once the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack (that is, pop() should return the same values as it would if there were just a single stack). 
 
    FOLLOW UP 
@@ -860,8 +850,6 @@ class ThreeStacks {
    }
    ```
 
-   
-
 3. In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (e.g., each disk sits on top of an even larger one). You have the following constraints: 
 
    (A) Only one disk can be moved at a time. 
@@ -897,8 +885,6 @@ class ThreeStacks {
        move(n-1, aux, toPeg, fromPeg);
    }
    ```
-
-   
 
 4. Implement a MyQueue class which implements a queue using two stacks. 
 
@@ -1077,13 +1063,76 @@ function makeBalancedBST(arr, start=0, end=arr.length-1) {
 
 ```
 
-
-
 1. Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (i.e., if you have a tree with depth D, you’ll have D linked lists). 
-2. Write an algorithm to find the ‘next’ node (i.e., in-order successor) of a given node in a binary search tree where each node has a link to its parent. 
-3. Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not necessarily a binary search tree. 
-4. You have two very large binary trees: T1, with millions of nodes, and T2, with hun- dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1. 
-5. You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value. Note that it can be any path in the tree - it does not have to start at the root. 
+
+```typescript
+/*
+ *       7              [    7,
+ *    4    20   ----->      4, 20,
+ *  1  5  10  22         1, 5, 10, 22 ]
+ */
+// question! should the linkedlists be sorted? 4,20? 20,4
+
+function bst_to_lists( node, d=0, lists=[] ) {
+    if ( lists[d] ) {
+        lists[d].push( node.value );
+    } else {
+        lists[d] = [ node.value ];
+    }
+    
+    if ( node.left ) {
+    	bst_to_lists(node.left, d+1, lists);   
+    }
+    
+    if ( node.right ) {
+        bst_to_lists(node.right, d+1, lists);
+    }
+    
+    return ll;
+}
+
+// bst_to_listss( treeUpThere )
+```
+
+1. Write an algorithm to find the ‘next’ node (i.e., in-order successor) of a given node in a binary search tree where each node has a link to its parent. 
+
+```typescript
+function next( node ) {
+    if ( node.right ) {
+        return min(node.right);
+    }
+    
+    let curr = node.parent;
+    while ( curr.value < node ) {
+        if ( ! curr.parent ) {
+            throw new Error(`There is no next for this node: ${node.value}`);
+        }
+        curr = curr.parent;
+    }
+    
+    return curr;
+}
+
+function min( node ) {
+    if ( node.left ) {
+        return min(node.left);
+    }
+    return node;
+}
+```
+
+
+
+1. Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not necessarily a binary search tree. 
+
+```typescript
+
+```
+
+
+
+1. You have two very large binary trees: T1, with millions of nodes, and T2, with hun- dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1. 
+2. You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum up to that value. Note that it can be any path in the tree - it does not have to start at the root. 
 
 ### Misc. Problems
 
@@ -1141,12 +1190,129 @@ function solve(numPeople, startIndex, dir, skip) {
 // ACTUAL SOLUTION IS RECURSIVE MATH INSTEAD.
 ```
 
+**Binary Tree Symmetry**
+
+```typescript
+function isSymmetric( root ) {
+    helper(root.left, root.right);
+}
+
+function helper(left, right) {
+    // if either is null, return true if they both are.
+    if ( left === null || right === null ) {
+        return left === null && right === null;
+    }
+    
+    return left.value === right.value &&
+        helper(left.left, right.right) &&
+        helper(left.right, right.left );
+}
+```
+
+**BST Inversion**
+
+```typescript
+function invert( root ) {
+    if ( ! root ) {
+        return null;
+    }
+    
+    const right = root.right
+    	? invert(root.right)
+    	: null;
+    const left = root.left
+    	? invert(root.left)
+    	: null;
+    
+    root.left = right;
+    root.right = left;
+    
+    return root;
+}
+function helper()
+```
+
 **Realtime Spell Checker**
 
 **Find all words in a Boggle Board**
 
 **Find the sqrt of a number using binary search and only +-/***
 
-**tell if something is a palindrom.  FOLLOW UP: find the largest palindrome within a string**
+**binary search**
+
+```typescript
+
+```
+
+**QuickSort**
+
+```typescript
+function quicksort( arr, left, right ) {
+    if ( left > right ) {
+        return arr;
+    }
+    const pivot = right;
+    const partitionIndex = partition(arr, left, right, pivot);
+    quicksort(arr, left, partitionIndex - 1);
+    quicksort(arr, partitionIndex + 1, right);
+}
+
+function partition(arr, pivot, left, right){
+    const pivotValue = arr[pivot];
+    let partitionIndex = left;
+    
+    for (let i = left; i < right; i++){
+        if(arr[i] < pivotValue){
+            swap(arr, i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    swap(arr, right, partitionIndex);
+    return partitionIndex;
+}
+
+function swap(arr, i, j) {
+    let tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+}
+```
+
+**MergeSort**
+
+```typescript
+function mergesort( arr ) {
+    if ( arr.length < 2) {
+        return arr;
+    }
+    
+    const mid = Math.floor(arr.length/2)
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    return merge( mergesort(left), mergesort(right) );
+}
+
+function merge( arr1, arr2 ) {
+    let merged = [];
+    let arr1Index = 0;
+    let arr2Index = 0;
+    
+    while( arr1Index < arr1.length && arr2Index < arr2.length ) {
+        if ( arr1[arr1Index] < arr2[arr2Index] ) {
+            merged.push(arr1[arr1Index]);
+            arr1Index++;
+        } else {
+            merged.push(arr2[arr2Index]);
+            arr2Index++;
+        }
+    }
+    
+    return merged.concat(arr1.slice(arr1Index)).concat(arr2.slice(arr2Index));
+}
+```
+
+
+
+**tell if a string is a palindrome.  FOLLOW UP: find the largest palindrome within a string**
 
 **how many ways to make a dollar out of coins**
