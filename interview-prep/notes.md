@@ -1383,3 +1383,33 @@ function getSubsets( arr, i = 0, buffer=[], all=[[]] ) {
 }
 ```
 
+**reverse linked list**
+
+```typescript
+function reverse( head ) {
+    if ( ! head || head.next === null ) {
+        return head;
+    }
+    
+    const rest = reverse(head.next);
+    head.next.next = head;
+    head.next = null;
+    return rest;
+}
+```
+
+## Questions I was actually asked
+
+#### Google Onsite
+
+**Unit conversion:** Given a data structure containing the conversion data between units, for example "USD" "EUR" 1.3 ..., write a function for converting between any two units.  Ends up being a graph problem with many layers of trickiness in it.  It is a graph composed of multiple disconnected graphs (i.e. watt/horsepower cannot be converted to a currency like USD), and also we are restricted in that we can't use N^2 space yet still want constant time output.  Didn't end up coding the whole thing but mapped out the algo where for each disconnected graph you need to pick a Ended up being a graph problem where I needed to represent it with an adjacency list since traversing it wasn't simple because it had multiple disconnected graphs within it. Then bfs etc. Not easy
+
+**Redact text in a file**: question was asked in a very ambiguous way so the first 5 minutes were  just me asking questions. Eventually the question became: "given a `filepath` and a list of `words` (think thousands of words), write out a new file with the exact same contents of the file at filepath except that any word found in `words` should be replaced with hashtags (redacted).  Note that the file at `filepath` is far too large to hold in memory.
+
+	**Follow up**: handle heiphens at ends of lines
+
+**Super Smash Bros Powerup**: Imagine representing a level of SSB in some data structure where the only things in the level were platform.  Implement a "gravity" powerup that makes all of the platforms fall all the way to the ground as far as they can until they hit either the floor or a platform below it.. The trick in optimizing this problem is maintaining an array of size levelWidth where you hold the lowest row a block could drop to per column that you update as you drop platforms from bottom to top.
+
+**JS Algos / Memoization etc**: First I was supposed to create a `retry` mechanic for a callback receiving function such that if it failed you would need to retry it N times. Was trivial with recursion.  Then I needed to implement `Promise.all`. Lastly she made me implement something I can't really remember... a memoized something. I think maybe figure out if a word can be shrunk to nothing given a set of words and a start word.
+
+**Word Ladder Variation**: Given a start word, an end word, and a list of words, can you get from start to end by modifying one letter at a time via (insertion/deletion/replacement) anywhere. This was hard and I really really fumbled and wrote gross code. Ended up creating a non performant N^2 sorta algorithm. also created a helper for discovering if a word is `oneEditAway`
