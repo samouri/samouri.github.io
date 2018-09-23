@@ -8,7 +8,7 @@ my name is jake and i am a nyc based software developer.
 
 **current**
 
-i work at Google.<br><br>
+i work at Google.<br>
 
 **past work experience**:
 
@@ -19,5 +19,4 @@ i work at Google.<br><br>
   * Proposed and led an internal initiative comprised of ten developers for using AST transforms to upgrade over 5,000 React Components to support the large breaking changes between React 15 and 16. The internal memos are private, but our [GitHub project is public](https://github.com/Automattic/wp-calypso/projects/49).
   * Major build process improvements.  The [most notable one](https://github.com/Automattic/wp-calypso/pull/11352) led to a drop in production build time of the project by 3.5x, from 11 minutes to 3 minutes. All we needed to do...was less.
   * Created a generic and highly efficient memoization technique for Redux applications that was an order of magnitude more efficient than prior work. It took advantage of WeakMaps for perfect garbage collection efficiency while maintaining constant time key lookup for computed results. I called it [tree-select](https://github.com/Automattic/wp-calypso/pull/20547) 
-* [Amazon](http://amazon.com) <br>
-
+* [Amazon](http://amazon.com): i used computers in Seattle to make t-shirts in Texas -- it was dope.
