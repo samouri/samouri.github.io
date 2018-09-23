@@ -8,12 +8,11 @@ my name is jake and i am a nyc based software developer.
 
 **current**
 
-i work at Google.<br>
-for the seriously boring details of what i am up to, you can check out my [funemployment log](/log). <br>
+i work at Google.<br><br>
 
 **past work experience**:
 
-* [Funemployment](): I spent exactly 140 days of being intentionally unemployed. I managed to stay pretty busy. I traveled to Iceland, Copenhagen, and Berlin. I learned OCaml and started working in  the intersection between OCaml and web development -- through that I became a core contributor to [FastPack](https://github.com/fastpack/fastpack). I watched khan academy videos to learn the basics of how modern day financial systems are run and began saving/investing for retirement.
+* [Funemployment](/log): I spent exactly 140 days of being intentionally unemployed. I managed to stay pretty busy. I traveled to Iceland, Copenhagen, and Berlin. I learned OCaml and started working in  the intersection between OCaml and web development -- through that I became a core contributor to [FastPack](https://github.com/fastpack/fastpack). I watched khan academy videos to learn the basics of how modern day financial systems work as well as learned how to save for retirement.  For the seriously boring but in-depth details of my time funemployed, you can check out my [log](/log).
 * [Automattic](https://automattic.com/): I spent 625 working at Automattic, mainly on their flagship open source product codenamed [Calypso](https://github.com/Automattic/wp-calypso). I started with barely knowing a lick of JavaScript but by the end was an integral part of its core framework team.  My proudest accomplishments were:
   * Proposed, designed, and implemented [dserve](https://wp.me/p2gHKz-oiS) ([source](https://github.com/Automattic/dserve)) for the on-the-fly creation of cloud hosted branches. it enabled painless pre-merge e2e testing, massively improved the ux of testing peers branches, and ultimately became a quality of life improvement for all developers.
   * Convinced the open source community of Calypso over a six month period, to abandon their personal tastes and adopt automated code formatting tools by creating a fork of the popular tool, Prettier, that more closely follows WordPress conventions. The fork's name was [wp-pretter](https://github.com/Automattic/wp-prettier) and I made the hard-fought argument for its adoption publicly [on github](https://github.com/Automattic/wp-calypso/issues/12260). The implementation required improvements to both *prettier* and *jest* that were then eventually upstreamed.  Since adoption, it has been seen as an overwhelmingly positive process improvement.
