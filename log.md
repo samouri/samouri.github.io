@@ -13,11 +13,20 @@ permalink: /log/
 
   * [x] Season 8
   * [x] Season 9
-* [ ] Full Metal Alchemist: Brotherhood
+* [x] Full Metal Alchemist: Brotherhood
 * [ ] The Gatekeepers (2013)
 * [ ] City of God
 * [ ] Arrested Development Season 5
 * [x] Big Mouth
+* [x] Bojack Horseman Season 5
+* [x] American Vandal Season 2
+
+**books**
+
+- [ ] Gone Fishing Portfolio
+- [ ] 1984
+
+
 
 **Learning**
 
