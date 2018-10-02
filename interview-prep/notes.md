@@ -1008,7 +1008,7 @@ function connected(a, b) {
 function bfs(node, fn) {
     // implement bfs.
     let visited = new Set();
-    let to_visit = [a];
+    let to_visit = [node];
     while ( to_visit.length !== 0 ) {
         const curr = to_visit.pop();
         fn(curr);
