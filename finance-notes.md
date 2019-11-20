@@ -9,9 +9,9 @@ permalink: /finance-notes
 ### Interest and Debt 
 
 **compound interest**: when you calculate interest by taking the initial amount (principal) and _also include_ the previously accumulated interest.  the general equation for figuring out how much money you'll have with interest that compounds annually and by starting out with a given interest rate, principal, and *n* number of years is:
-$$
-monies = principal * (interest) ^n
-$$
+<amp-mathml layout="container" inline
+    data-formula="monies = principal * (interest) ^n">
+</amp-mathml>
 Lets say you wanted to figure out how many years it would take to _double_ your principal. Moving around a few numbers would yield:
 $$
 years = \log_{interest} 2
