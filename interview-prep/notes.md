@@ -991,26 +991,9 @@ function connected(a, b) {
 
 // bfs implementation w/ visitor pattern
 function bfs(node, fn) {
-<<<<<<< HEAD
-    // implement bfs.
-    let visited = new Set();
-    let to_visit = [node];
-    while ( to_visit.length !== 0 ) {
-        const curr = to_visit.pop();
-        fn(curr);
-        
-        visited.add(curr);
-        for ( const sibling of curr.sublings() ) {
-            if ( ! visited.has(sibling)) {
-                to_visit.push(sibling);
-            }
-        }
-    }
-    return;
-=======
   // implement bfs.
   let visited = new Set()
-  let to_visit = [a]
+  let to_visit = [node]
   while (to_visit.length !== 0) {
     const curr = to_visit.pop()
     fn(curr)
@@ -1023,7 +1006,6 @@ function bfs(node, fn) {
     }
   }
   return
->>>>>>> Redo all the colors and layout
 }
 ```
 
