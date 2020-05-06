@@ -5,8 +5,9 @@ layout: page
 ## Experience
 
 [<span class="company">Google</span>](https://google.com) <span class="company-date">October 2018 - Present</span> <br/>
-Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
-Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+
+- Individual Contributor for [AMP](https://amp.dev).
+- Built an API Generator for teams to quickly spin up new APIs.
 
 [<span class="company">Funemployment</span>](/log) <span class="company-date">June 2017 - October 2018 </span><br/>
 I spent exactly 140 days of being intentionally unemployed. I managed to stay pretty busy. I traveled to Iceland, Copenhagen, and Berlin. I learned OCaml and started working in the intersection between OCaml and web development -- through that I became a core contributor to [FastPack](https://github.com/fastpack/fastpack). I watched khan academy videos to learn the basics of how modern day financial systems work as well as learned how to save for retirement. For the seriously boring but in-depth details of my time funemployed, you can check out my [log](/log).
@@ -21,4 +22,4 @@ I spent 625 working at Automattic, mainly on their flagship open source product 
 - Created a generic and highly efficient memoization technique for Redux applications that was an order of magnitude more efficient than prior work. It took advantage of WeakMaps for perfect garbage collection efficiency while maintaining constant time key lookup for computed results. I called it [tree-select](https://github.com/Automattic/wp-calypso/pull/20547)
 
 [<span class="company">Amazon</span>](http://amazon.com) <span class="company-date">July 2015 - August 2016</span> <br/>
-I used computers in Seattle to make t-shirts in Texas -- it was dope.
+I used computers in Seattle to make t-shirts in Texas.
