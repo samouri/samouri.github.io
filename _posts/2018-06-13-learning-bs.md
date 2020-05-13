@@ -9,7 +9,9 @@ date: 2018-06-13
 
 Ever since [CMSC330](http://www.cs.umd.edu/class/spring2019/cmsc330/), I've been enamored with OCaml as a language that makes large classes of bugs impossible. While usage of OCaml has largely been confined to academia and [Jane Street](https://blog.janestreet.com/), it recently gained new life in the web space thanks to projects like [Bucklescript](https://bucklescript.github.io/) and [Reason](https://reasonml.github.io/).
 
-I created [bucklefrogger](https://samouri.github.io/bucklefrog/), a `<canvas>` based Frogger clone, in order to help me explore OCaml's compile-to-js story.
+I created [buckle-frogger](https://samouri.github.io/bucklefrog/), a `<canvas>` based Frogger clone, in order to help me explore OCaml's compile-to-js story.
+
+![gameplay](https://raw.githubusercontent.com/FriteGames/buckle-frogger/master/gameplay.gif)
 
 ### Researching Frogger
 
@@ -90,11 +92,7 @@ let keydown (evt:Dom.event) =
 ;;
 ```
 
-### state management
-
-_to be continued_
-
-#### To Be Continued
+### To Be Continued
 
 ### sources
 

@@ -1,5 +1,68 @@
 <nav>
-  <a href="/"> <img src="/favicon-white.svg" height="40px" width="40px" alt="favicon-jf" /> </a>
+  <a href="/">
+    <img src="/favicon-white.svg" height="40px" width="40px" alt="favicon-jf" />
+  </a>
+  <a
+    href="/"
+    id="myname"
+    style="display: flex; align-self: flex-end; padding-right: 42px; font-size: 1.25rem;"
+    >Jake Fried
+  </a>
+  <a href="/"> Posts </a>
   <a href="/resume"> Experience </a>
   <a href="https://github.com/samouri"> GitHub </a>
 </nav>
+
+<style>
+  body {
+    font-family: monospace, sans-serif;
+    background-color: #0a101e;
+    color: #d7d7d7e0;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    padding-bottom: 10px;
+    padding-top: 16px;
+    border-bottom: #80838b solid 1px;
+  }
+
+  nav a:first-child {
+    padding-left: 10px;
+  }
+
+  nav a {
+    display: flex;
+    align-self: flex-end;
+    padding-left: 20px;
+    text-decoration: none;
+    color: #7fa6fa;
+  }
+
+  #myname {
+    color: white;
+  }
+
+  a:hover,
+  #myname:hover {
+    transition: 0.3s;
+    color: #fa7fea;
+  }
+
+  .content {
+    font-size: 16px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  p img {
+    display: flex;
+    margin: 0 auto;
+  }
+</style>
