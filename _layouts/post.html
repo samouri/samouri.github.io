@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {% include head.html %}
+    <link rel="stylesheet" href="/css/nightowl.css" />
   </head>
   <style>
     body {
@@ -35,23 +36,6 @@
       color: #7fa6fa;
     }
 
-    .company {
-      margin-top: 16px;
-      font-size: 1.25rem;
-    }
-
-    .company-date {
-      float: right;
-      color: #82858c;
-      font-size: 1rem;
-      font-weight: normal;
-    }
-
-    #experience {
-      margin-top: 16px;
-      line-height: normal;
-    }
-
     .content {
       font-size: 16px;
       margin: 0 auto;
@@ -79,21 +63,19 @@
       margin-top: 32px;
       margin-bottom: 0;
     }
-
-    ul {
-      margin-top: 8px;
-    }
-    p {
-      margin-top: 8px;
-    }
-
-    ul {
-      list-style: none;
-    }
   </style>
 
   <body>
     {% include nav.html %}
+
     <div class="content">{{ content }}</div>
+    <footer>
+      <!-- math support -->
+      <script
+        async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        type="text/javascript"
+      ></script>
+    </footer>
   </body>
 </html>
