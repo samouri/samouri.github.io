@@ -30,6 +30,9 @@ var css = `
 .lightbox {
   cursor: zoom-in;
 }
+.no-scroll {
+  overflow-y: hidden;
+}
 `;
 
 
@@ -60,6 +63,7 @@ function openModal(e) {
   }
   modalImg.src = img.src;
   modal.classList.add('show'); 
+  document.body.classList.add('no-scroll');
   e.stopPropagation();
 
   function closeHandler(e) {
@@ -68,6 +72,7 @@ function openModal(e) {
     //   return;
     // }
     modal.classList.remove('show'); 
+    document.body.classList.remove('no-scroll');
     window.removeEventListener('click', closeHandler);
   }
   window.addEventListener('click', closeHandler);
