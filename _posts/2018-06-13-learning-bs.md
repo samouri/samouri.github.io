@@ -2,6 +2,7 @@
 layout: post
 title: Making Canvas Games with OCaml
 permalink: /learning-bs/
+category: posts
 date: 2018-06-13
 ---
 
@@ -26,7 +27,7 @@ The 1981 Arcade version of Frogger ran with raster graphics and resolution of 22
 - The next 12 rows are used to represent 1 game lane each.
 - The last (and 16th) row holds the life count and countdown timer.
 
-![Screenshot with Ruler](/frogger-ruler.png)
+![Screenshot with Ruler](/assets/images/frogger-ruler.png)
 
 #### mechanics
 

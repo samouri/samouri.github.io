@@ -3,7 +3,7 @@ layout: page
 ---
 
 <ul>
-  {% for post in site.posts %}
+  {% for post in site.categories.posts %}
     <li>
       {{post.date | date: '%m/%y' }} <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
