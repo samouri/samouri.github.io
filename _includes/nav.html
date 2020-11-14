@@ -1,13 +1,8 @@
 <nav>
-  <a href="/">
+  <a href="/" class="favicon">
     <img src="/assets/images/favicon-white.svg" height="40px" width="40px" alt="favicon-jf" />
   </a>
-  <a
-    href="/"
-    id="myname"
-    style="display: flex; align-self: flex-end; font-size: 1.25rem;"
-    >Jake Fried
-  </a>
+  <a href="/" id="myname" >Jake Fried </a>
   <div style="margin-right:42px;"></div>
   <a href="/"> Experience </a>
   <a href="/tech"> Tech </a>
@@ -30,10 +25,37 @@
   nav {
     display: flex;
     flex-direction: row;
-    height: 40px;
     padding-bottom: 10px;
     padding-top: 16px;
     border-bottom: #80838b solid 1px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      height: auto;
+    }
+    nav a {
+      margin-bottom: 5px; 
+    }
+    .favicon {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 601px) {
+    nav {
+      flex-direction: row;
+      height: 40px;
+    }
+    nav a {
+      display: flex;
+      align-self: flex-end;
+      padding-left: 20px; 
+    }
+    #myname {
+      align-self: flex-end;
+    }
   }
 
   nav a:first-child {
@@ -41,15 +63,14 @@
   }
 
   nav a {
-    display: flex;
-    align-self: flex-end;
-    padding-left: 20px;
     text-decoration: none;
     color: #7fa6fa;
   }
 
   #myname {
     color: white;
+    display: flex;
+    font-size: 1.25rem;
   }
 
   a:hover,

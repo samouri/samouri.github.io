@@ -47,12 +47,20 @@
     h3 {
       margin-top: 32px;
       margin-bottom: 0;
-    }
+    } 
 
-    ul,
-    p {
+    ul, p {
       margin-top: 8px;
     }
+
+    @media only screen and (max-width: 600px) {
+      /* hacky standin for company lines*/
+      h3 {
+        display: flex;
+        flex-direction: column;
+      }
+      br {display: none;}
+    } 
   </style>
 
   <body>
