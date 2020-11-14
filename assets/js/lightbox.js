@@ -3,7 +3,6 @@ var css = `
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
   left: 0;
   top: 0;
   width: 100%;
@@ -18,12 +17,15 @@ var css = `
 
 .modal-content {
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   width: 90%;
-  max-width: 1200px;
+  height: 100%;
 }
 
 .modal-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 100%;
 }
 
