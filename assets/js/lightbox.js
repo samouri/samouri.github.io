@@ -8,9 +8,9 @@ var css = `
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: black; 
+  background-color: black;
   cursor: zoom-out;
-} 
+}
 .modal.show {
   display: block;
 }
@@ -42,7 +42,7 @@ function addLightboxStyle(doc) {
   var lightboxStyleTag = doc.createElement('style');
   lightboxStyleTag.id = 'lightbox';
   lightboxStyleTag.innerHTML = css;
-  doc.head.appendChild(lightboxStyleTag); 
+  doc.head.appendChild(lightboxStyleTag);
 }
 
 function openModal(e) {
@@ -64,7 +64,7 @@ function openModal(e) {
     document.body.appendChild(modal);
   }
   modalImg.src = img.src;
-  modal.classList.add('show'); 
+  modal.classList.add('show');
   document.body.classList.add('no-scroll');
   e.stopPropagation();
 
@@ -73,7 +73,7 @@ function openModal(e) {
     // if (e.target.closest('.modal')) {
     //   return;
     // }
-    modal.classList.remove('show'); 
+    modal.classList.remove('show');
     document.body.classList.remove('no-scroll');
     window.removeEventListener('click', closeHandler);
   }
