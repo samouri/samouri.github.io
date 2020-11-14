@@ -23,8 +23,8 @@ permalink: /log/
 
 **books**
 
-- [ ] Gone Fishing Portfolio
-- [ ] 1984
+- [X] Gone Fishing Portfolio
+- [X] 1984
 
 
 
