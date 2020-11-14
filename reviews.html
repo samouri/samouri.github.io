@@ -1,0 +1,13 @@
+---
+layout: page
+---
+
+<div class="reviews"> 
+  {% for movie in site.data.reviews.movies %}
+  <div class="review">
+    <span>{{movie.title}}</span> 
+    <span>{{movie.date}}</span> 
+    <span>{{movie.rating}}</span>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,10 @@
+{
+  "movies":  [
+    {
+      "date": "11-13-2020",
+      "title": "Borat 2",
+      "rating": "★★★",
+      "short_review": "Entertaining throughout, but ultimately falls flat compared to the original.",
+    }
+  ] 
+}
