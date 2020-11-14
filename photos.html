@@ -31,7 +31,7 @@ layout: page
   }
 
   .gallery:hover .gallery_cta {
-    transition: opacity 250ms ease-out; 
+    transition: opacity 250ms ease-out;
     opacity: 1
   }
   .gallery_cta a {
@@ -45,7 +45,7 @@ layout: page
 </style>
 <div style="height: 100px;"></div>
 
-<div class="galleries"> 
+<div class="galleries">
   {% for collection in site.data.photos.events %}
   <div class="gallery" style="background-image: url(/assets/images/{{collection.cover}});">
     <div class="gallery_cta">

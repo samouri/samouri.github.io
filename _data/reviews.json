@@ -2,9 +2,17 @@
   "movies":  [
     {
       "date": "11-13-2020",
-      "title": "Borat 2",
+      "title": "Borat Subsequent Moviefilm",
+      "link": "https://www.imdb.com/title/tt13143964/",
       "rating": "★★★",
-      "short_review": "Entertaining throughout, but ultimately falls flat compared to the original.",
+      "short_review": "Entertaining throughout, but ultimately falls flat compared to the original."
+    },
+    {
+      "date": "07-11-2020",
+      "title": "Palm Springs",
+      "link": "https://www.imdb.com/title/tt9484998/",
+      "rating": "★★★★",
+      "short_review": "A damn good time. Lighthearted romcom that most everyone would enjoy."
     }
-  ] 
+  ]
 }

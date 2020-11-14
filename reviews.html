@@ -2,12 +2,23 @@
 layout: page
 ---
 
-<div class="reviews"> 
+<style>
+  .reviews {
+    display: grid;
+    grid-column-gap: 24px;
+    grid-row-gap: 8px;
+    grid-template-columns: 1fr max-content max-content;
+  }
+
+
+</style>
+
+<div style="height: 20px"></div>
+<div class="reviews">
   {% for movie in site.data.reviews.movies %}
-  <div class="review">
-    <span>{{movie.title}}</span> 
-    <span>{{movie.date}}</span> 
+    <span>{{movie.title}}</span>
     <span>{{movie.rating}}</span>
-  </div>
+    <time>{{movie.date}}</time>
+    <!-- <span>{{movie.short_review}}</span> -->
   {% endfor %}
 </div>
