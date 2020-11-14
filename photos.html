@@ -1,0 +1,56 @@
+---
+layout: page
+---
+
+<style>
+  .galleries {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .gallery {
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+  }
+
+  .gallery_cta {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+  }
+
+  .gallery:hover .gallery_cta {
+    transition: opacity 250ms ease-out; 
+    opacity: 1
+  }
+  .gallery_cta a {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, .25);
+    padding: 10px 25px;
+    font-weight: 300;
+  }
+</style>
+<div style="height: 100px;"></div>
+
+<div class="galleries"> 
+  {% for collection in site.data.photos.events %}
+  <div class="gallery" style="background-image: url(/assets/images/{{collection.cover}});">
+    <div class="gallery_cta">
+      <a href="{{collection.link}}">{{collection.name}}</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>

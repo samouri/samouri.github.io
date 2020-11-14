@@ -1,0 +1,24 @@
+---
+layout: page
+---
+
+<style>
+  .photos {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .photo {
+    width: 100%;
+  }
+</style> 
+
+<h1>Storm King</h1>
+<div class="photos"> 
+  {% for image in site.data.photos.events[0].photos %}
+  <img class="photo lightbox" src="/assets/images/{{image}}" loading="lazy"/>
+  <div style="height: 20px;"></div> 
+  {% endfor %}
+</div>
+
+<script async src="/assets/js/lightbox.js"></script>

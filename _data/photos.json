@@ -1,0 +1,17 @@
+{
+  "events":  [
+    {
+      "name": "Storm King",
+      "link": "/photos/storm_king",
+      "cover": "storm_king/windypath.jpg",
+      "photos": [
+        "storm_king/windypath.jpg",
+        "storm_king/falltree.jpg",
+        "storm_king/hand.jpg", 
+        "storm_king/lane.jpg",
+        "storm_king/mo.jpg", 
+        "storm_king/redtree.jpg"
+      ]
+    }
+  ] 
+}
