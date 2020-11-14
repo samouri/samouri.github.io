@@ -3,6 +3,74 @@ title: resume
 layout: page
 ---
 
+<style>
+  .company {
+    margin-top: 16px;
+    font-size: 1.25rem;
+  }
+
+  .company-date {
+    float: right;
+    color: rgb(0, 0, 0, 0.6);
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  #experience {
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+
+  .content {
+    font-size: 16px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  footer {
+    border-top: black solid 1px;
+    height: 50px;
+    margin-top: 20px;
+    padding-top: 5px;
+  }
+
+  .content a {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    transition: 0.3s;
+    text-decoration: underline;
+  } 
+  .content p a,
+  .content ul a {
+    text-decoration: underline; 
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  ul, p {
+    margin-top: 8px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    /* hacky standin for company lines*/
+    h3 {
+      display: flex;
+      flex-direction: column;
+    }
+    br {display: none;}
+  }
+</style>
+
 ## Experience
 
 ### [<span class="company">Google</span>](https://google.com) <span class="company-date">October 2018 - Present</span> <br/>

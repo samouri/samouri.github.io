@@ -1,69 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-{% include head.html %}
-  </head>
-  <style>
-    .company {
-      margin-top: 16px;
-      font-size: 1.25rem;
-    }
-
-    .company-date {
-      float: right;
-      color: #82858c;
-      font-size: 1rem;
-      font-weight: normal;
-    }
-
-    #experience {
-      margin-top: 16px;
-      line-height: normal;
-    }
-
-    .content {
-      font-size: 16px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    footer {
-      border-top: black solid 1px;
-      height: 50px;
-      margin-top: 20px;
-      padding-top: 5px;
-    }
-
-    .content a {
-      color: rgb(39, 108, 255);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      color: #e8e8e8;
-    }
-    h3 {
-      margin-top: 32px;
-      margin-bottom: 0;
-    }
-
-    ul, p {
-      margin-top: 8px;
-    }
-
-    @media only screen and (max-width: 600px) {
-      /* hacky standin for company lines*/
-      h3 {
-        display: flex;
-        flex-direction: column;
-      }
-      br {display: none;}
-    }
-  </style>
-
-  <body>
+{% include head.html %} 
+  </head> 
+  <body> 
     {% include nav.html %}
     <div class="content">{{ content }}</div>
   </body>
