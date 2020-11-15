@@ -11,13 +11,13 @@ layout: page
   .photo {
     width: 100%;
   }
-</style> 
+</style>
 
 <h1>Storm King</h1>
-<div class="photos"> 
+<div class="photos">
   {% for image in site.data.photos.events[0].photos %}
   <img class="photo lightbox" src="/assets/images/{{image}}" loading="lazy" decoding="async" />
-  <div style="height: 20px;"></div> 
+  <div style="height: 20px;"></div>
   {% endfor %}
 </div>
 

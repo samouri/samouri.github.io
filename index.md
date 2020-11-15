@@ -43,10 +43,11 @@ layout: page
   a:hover {
     transition: 0.3s;
     text-decoration: underline;
-  } 
+  }
+
   .content p a,
   .content ul a {
-    text-decoration: underline; 
+    text-decoration: underline;
   }
 
   h2 {
