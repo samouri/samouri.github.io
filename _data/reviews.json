@@ -1,6 +1,20 @@
 {
   "movies":  [
     {
+      "date": "05-08-2021",
+      "title": "The Mitchells vs. The Machines",
+      "link": "http://www.imdb.com/title/tt7979580",
+      "rating": "★★★★",
+      "short_review": "From the same folks as Lego Movie and Spiderverse, this animated movie is a masterpiece. Until the end...it gets too sappy for too long."
+    },
+    {
+      "date": "11-28-2020",
+      "title": "The Trial of the Chicago 7",
+      "link": "https://www.imdb.com/title/tt1070874",
+      "rating": "★★★★",
+      "short_review": "Incredibly well done. A Sorkin fill as good as any other."
+    },
+    {
       "date": "11-13-2020",
       "title": "Borat Subsequent Moviefilm",
       "link": "https://www.imdb.com/title/tt13143964/",

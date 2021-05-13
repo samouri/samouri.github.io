@@ -14,11 +14,12 @@ layout: page
 </style>
 
 <div style="height: 20px"></div>
-<div class="reviews">
+<div>
   {% for movie in site.data.reviews.movies %}
+  <div title="{{movie.short_review}}" class="reviews" style="margin-bottom: 8px">
     <span>{{movie.title}}</span>
     <span>{{movie.rating}}</span>
     <time>{{movie.date}}</time>
-    <!-- <span>{{movie.short_review}}</span> -->
+  </div>
   {% endfor %}
 </div>

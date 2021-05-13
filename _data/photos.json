@@ -12,6 +12,15 @@
         "storm_king/mo.jpg", 
         "storm_king/redtree.jpg"
       ]
+    },
+    {
+      "name": "Street Art",
+      "link": "/photos/street_art",
+      "cover": "street_art/face.jpg",
+      "photos": [
+        "street_art/face.jpg",
+        "street_art/graffiti_boy.jpg"
+      ]
     }
   ] 
 }
